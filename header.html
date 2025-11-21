@@ -1,3 +1,4 @@
+<!-- HEADER START -->
 <header class="main-header main-header__two">
     <nav class="main-menu main-menu__two">
         <div class="container">
@@ -6,15 +7,11 @@
                     <img src="assets/images/logo-light.png" width="155" alt="">
                 </a>
                 <span class="fa fa-bars mobile-nav__toggler"></span>
-            </div><!-- /.logo-box -->
+            </div>
 
             <ul class="main-menu__list">
-                <li class="dropdown">
-                    <a href="index.html">Home</a>
-                </li>
-                <li class="dropdown">
-                    <a href="about.html">About Us</a>
-                </li>
+                <li class="dropdown"><a href="index.html">Home</a></li>
+                <li class="dropdown"><a href="about.html">About Us</a></li>
 
                 <li class="dropdown">
                     <a href="services.html">Services</a>
@@ -28,17 +25,13 @@
                     </ul>
                 </li>
 
-                <li>
-                    <a href="team.html">Our Team</a>
-                </li>
-                <li>
-                    <a href="contact.html">Contact Us</a>
-                </li>
+                <li><a href="team.html">Our Team</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+
                 <li class="search-btn search-toggler">
                     <a href="#"><i class="pylon-icon-magnifying-glass"></i></a>
                 </li>
             </ul>
-            <!-- /.main-menu__list -->
 
             <div class="main-header__info">
                 <div class="main-header__info-phone">
@@ -48,23 +41,27 @@
                         <h3><a href="tel:1300729821">1300 729 821</a></h3>
                     </div>
                 </div>
-            </div><!-- /.main-header__info -->
-        </div><!-- /.container -->
+            </div>
+        </div>
     </nav>
-</header><!-- /.main-header -->
+</header>
 
 <div class="stricky-header stricked-menu main-menu main-menu__two">
     <div class="sticky-header__content"></div>
 </div>
 
+<!-- MOBILE NAV -->
 <div class="mobile-nav__wrapper">
     <div class="mobile-nav__overlay mobile-nav__toggler"></div>
+
     <div class="mobile-nav__content">
-        <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
+        <span class="mobile-nav__close mobile-nav__toggler">
+            <i class="fa fa-times"></i>
+        </span>
 
         <div class="logo-box">
-            <a href="index.html" aria-label="logo image">
-                <img src="assets/images/logo-light.png" width="155" alt="">
+            <a href="index.html">
+                <img src="assets/images/logo-light.png" width="155">
             </a>
         </div>
 
@@ -79,3 +76,15 @@
     </div>
 </div>
 
+<!-- SEARCH POPUP -->
+<div class="search-popup">
+    <div class="search-popup__overlay search-toggler"></div>
+
+    <div class="search-popup__content">
+        <form>
+            <input type="text" placeholder="Search Here..." />
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+</div>
+<!-- HEADER END -->
