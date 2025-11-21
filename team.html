@@ -148,21 +148,25 @@
         </div>
     </section>
 
-    <!-- footer (loaded via footer.html like reference) -->
+        <!-- FOOTER PLACEHOLDER -->
     <div id="footer"></div>
 
-    <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
+    <!-- Scroll to Top -->
+    <a href="#" data-target="html" class="scroll-to-target scroll-to-top">
+        <i class="fa fa-angle-up"></i>
+    </a>
 
-    <!-- Load shared header/footer HTML -->
+    <!-- Load Header + Footer -->
     <script>
-        // Load the header
+        // Load HEADER, then initialize menu
         fetch('header.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('header').innerHTML = data;
+                initMobileMenu(); // ← Initialize hamburger AFTER header loads
             });
 
-        // Load the footer
+        // Load FOOTER (no need to initialize anything here)
         fetch('footer.html')
             .then(response => response.text())
             .then(data => {
@@ -170,7 +174,7 @@
             });
     </script>
 
-    <!-- JS -->
+    <!-- JS Files -->
     <script src="assets/js/jquery-3.5.1.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/swiper.min.js"></script>
@@ -183,9 +187,53 @@
     <script src="assets/js/jquery.appear.min.js"></script>
     <script src="assets/js/wNumb.min.js"></script>
     <script src="assets/js/nouislider.min.js"></script>
-
-    <!-- template js -->
     <script src="assets/js/theme.js"></script>
-</body>
 
+    <!-- FIX: Re-init theme.js AFTER dynamic header loads -->
+    <script>
+        function initMobileMenu() {
+
+            // Clone Desktop Menu → Mobile Nav
+            if ($(".mobile-nav__container").length) {
+                let navContent = document.querySelector(".main-menu").innerHTML;
+                document.querySelector(".mobile-nav__container").innerHTML = navContent;
+            }
+
+            // Mobile Menu Toggler
+            $(".mobile-nav__toggler").off("click").on("click", function (e) {
+                e.preventDefault();
+                $(".mobile-nav__wrapper").toggleClass("expanded");
+            });
+
+            // Mobile Dropdown Expand Buttons
+            if ($(".mobile-nav__container .dropdown > a").length) {
+                $(".mobile-nav__container .dropdown > a").each(function () {
+
+                    let self = $(this);
+
+                    // Avoid double buttons
+                    if (!self.find("button").length) {
+                        let btn = document.createElement("button");
+                        btn.innerHTML = "<i class='fa fa-angle-down'></i>";
+                        btn.classList.add("mobile-dropdown-btn");
+                        self.append(btn);
+
+                        $(btn).on("click", function (e) {
+                            e.preventDefault();
+                            $(this).toggleClass("expanded");
+                            $(this).parent().next("ul").slideToggle();
+                        });
+                    }
+                });
+            }
+
+            // Search Popup
+            $(".search-toggler").off("click").on("click", function (e) {
+                e.preventDefault();
+                $(".search-popup").toggleClass("active");
+            });
+        }
+    </script>
+
+</body>
 </html>
